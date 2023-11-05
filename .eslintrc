@@ -1,0 +1,10 @@
+{
+  "extends": ["@nuxtjs/eslint-config-typescript"],
+  "rules": {
+    "arrow-body-style": "error",
+    "comma-dangle": "off",
+    "semi": "off",
+    "arrow-parens": ["error", "always"],
+    "space-before-function-paren": "off"
+  }
+}

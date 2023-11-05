@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "prepare": "nitropack prepare",
+    "dev": "nitropack dev",
+    "build": "nitropack build",
+    "preview": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "@trpc/server": "^10.43.1",
+    "nitropack": "latest",
+    "trpc-openapi": "^1.2.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "prettier": "^3.0.3"
+  }
+}
