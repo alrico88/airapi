@@ -8,7 +8,7 @@ function html (str, ...args): string {
 
 // Served as /_nitro/swagger
 export default eventHandler(() => {
-  const title = 'API Template'
+  const title = 'AirAPI'
 
   const CDN_BASE = 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@^4'
 

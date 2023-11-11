@@ -4,9 +4,11 @@
     "prepare": "nitropack prepare",
     "dev": "nitropack dev",
     "build": "nitropack build",
-    "preview": "node .output/server/index.mjs"
+    "preview": "node .output/server/index.mjs",
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
+    "@prisma/client": "5.5.2",
     "@trpc/server": "^10.43.1",
     "nitropack": "latest",
     "trpc-openapi": "^1.2.0",
@@ -14,6 +16,8 @@
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "prettier": "^3.0.3"
+    "eslint": "^8.53.0",
+    "prettier": "^3.0.3",
+    "prisma": "^5.5.2"
   }
 }

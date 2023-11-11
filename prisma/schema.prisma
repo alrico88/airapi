@@ -1,0 +1,47 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Airport {
+  id           Int      @id @default(autoincrement())
+  icao         String   @unique @db.VarChar(10)
+  type         String   @db.VarChar(255)
+  name         String?  @db.VarChar(255)
+  latitude     Float
+  longitude    Float
+  elevation    Int?
+  continent    String   @db.VarChar(255)
+  isoCountry   String   @db.VarChar(255)
+  isoRegion    String   @db.VarChar(255)
+  municipality String?  @db.VarChar(255)
+  Runway       Runway[]
+}
+
+model Runway {
+  id                   Int     @id @default(autoincrement())
+  airport              Airport @relation(fields: [airportRef], references: [id])
+  airportRef           Int
+  airportIdent         String
+  length               Int?
+  width                Int?
+  surface              String?
+  lighted              Int
+  closed               Int
+  leIdent              String?
+  leLatitude           Float?
+  leLongitude          Float?
+  leElevation          Int?
+  leHeading            Int?
+  leDisplacedThreshold Int?
+  heIdent              String?
+  heLatitude           Float?
+  heLongitude          Float?
+  heElevation          Int?
+  heHeading            Int?
+  heDisplacedThreshold Int?
+}
