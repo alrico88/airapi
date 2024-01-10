@@ -13,6 +13,7 @@
     "@trpc/server": "^10.43.1",
     "mrmime": "^2.0.0",
     "nitropack": "latest",
+    "sharp": "0.32.6",
     "staticmaps": "^1.13.0",
     "trpc-openapi": "^1.2.0",
     "zod": "^3.22.4"
