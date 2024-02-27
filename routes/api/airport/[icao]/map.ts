@@ -1,6 +1,5 @@
 import StaticMaps from 'staticmaps';
 import { mimes } from 'mrmime';
-import { prisma } from 'helpers/prisma';
 
 export default defineEventHandler<{
   query: {

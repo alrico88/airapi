@@ -1,7 +1,6 @@
 import { IncomingMessage } from 'http';
 import { createOpenApiHttpHandler } from 'trpc-openapi';
 import { appRouter } from '../../trpc/router';
-import { prisma } from 'helpers/prisma';
 
 const normalizePath = (path: string) => `/${path.replace(/^\/|\/$/g, '')}`;
 

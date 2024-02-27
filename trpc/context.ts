@@ -1,5 +1,4 @@
 import { inferAsyncReturnType } from '@trpc/server';
-import { prisma } from 'helpers/prisma';
 
 /**
  * Creates context for an incoming request

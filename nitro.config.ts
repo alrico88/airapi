@@ -3,6 +3,10 @@ export default defineNitroConfig({
   runtimeConfig: {
     baseUrl: '/api',
   },
+  imports: {
+    autoImport: true,
+    dirs: ['./helpers/**'],
+  },
   routeRules: {
     '/**': {
       cors: true,
