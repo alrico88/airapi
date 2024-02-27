@@ -1,8 +1,7 @@
 import { IncomingMessage } from 'http';
 import { createOpenApiHttpHandler } from 'trpc-openapi';
-
-import { PrismaClient } from '@prisma/client';
 import { appRouter } from '../../trpc/router';
+import { prisma } from 'helpers/prisma';
 
 const normalizePath = (path: string) => `/${path.replace(/^\/|\/$/g, '')}`;
 
@@ -11,7 +10,7 @@ type NuxtRequest = IncomingMessage & {
 };
 
 export const createContext = () => ({
-  prisma: new PrismaClient(),
+  prisma,
 });
 
 const openApiHttpHandler = createOpenApiHttpHandler({

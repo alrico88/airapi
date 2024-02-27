@@ -1,16 +1,14 @@
-import { PrismaClient } from '@prisma/client';
 import StaticMaps from 'staticmaps';
-import { mimes } from 'mrmime'
+import { mimes } from 'mrmime';
+import { prisma } from 'helpers/prisma';
 
 export default defineEventHandler<{
   query: {
-    width?: string,
-    height?: string
-    zoom?: string
-  }
-}>(async(event) => {
-  const prisma = new PrismaClient();
-
+    width?: string;
+    height?: string;
+    zoom?: string;
+  };
+}>(async (event) => {
   const icao = getRouterParam(event, 'icao');
   const { width = 500, height = 500, zoom = 10 } = getQuery(event);
 
@@ -29,8 +27,8 @@ export default defineEventHandler<{
   if (!data) {
     return createError({
       statusCode: 404,
-      message: 'Airport not found'
-    })
+      message: 'Airport not found',
+    });
   }
 
   const markerOpts = {
@@ -38,29 +36,29 @@ export default defineEventHandler<{
     width: 25,
     img: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
     offsetX: 12.5,
-    offsetY: 41
-  }
+    offsetY: 41,
+  };
 
   const map = new StaticMaps({
     width: Number(width),
     height: Number(height),
-  })
+  });
 
   map.addMarker({
     ...markerOpts,
-    coord: [data.longitude, data.latitude]
-  })
+    coord: [data.longitude, data.latitude],
+  });
 
   map.addText({
     coord: [data.longitude, data.latitude],
     text: data.icao,
     offsetX: markerOpts.offsetX,
     offsetY: -10,
-  })
+  });
 
-  await map.render([data.longitude, data.latitude], Number(zoom))
+  await map.render([data.longitude, data.latitude], Number(zoom));
 
-  setHeader(event, 'Content-Type', mimes.png)
+  setHeader(event, 'Content-Type', mimes.png);
 
-  return map.image.buffer() as any
-})
+  return map.image.buffer() as any;
+});
