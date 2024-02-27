@@ -4,7 +4,7 @@ export default defineNitroConfig({
     baseUrl: '/api',
   },
   routeRules: {
-    '**': {
+    '/**': {
       cors: true,
       headers: {
         'Access-Control-Allow-Origin': '*',
